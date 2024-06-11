@@ -572,7 +572,7 @@ class Agent():
         """
             Entraînement du modèle et à chaque épisode test de l'efficacité sur le jeu de test et sauvegarde des résultats dans un fichier de logs.
         """
-        op = open("logs_over_epochs", "w")
+        op = open("logs_over_epochs", "a")
         op.write("NU = "+str(self.nu))
         op.write("ALPHA = "+str(self.alpha))
         op.write("THRESHOLD = "+str(self.threshold))
