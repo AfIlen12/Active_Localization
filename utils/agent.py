@@ -86,36 +86,36 @@ class Agent():
 
 
 
-def intersection_over_union(self, box1, box2):
-    """
-        Calcul de la mesure d'intersection/union
-        Entrée :
-            Coordonnées [x_min, x_max, y_min, y_max] de la boite englobante de la vérité terrain et de la prédiction
-        Sortie :
-            Score d'intersection/union.
-    """
-    x11, x21, y11, y21 = box1
-    x12, x22, y12, y22 = box2
+    def intersection_over_union(self, box1, box2):
+        """
+            Calcul de la mesure d'intersection/union
+            Entrée :
+                Coordonnées [x_min, x_max, y_min, y_max] de la boite englobante de la vérité terrain et de la prédiction
+            Sortie :
+                Score d'intersection/union.
+        """
+        x11, x21, y11, y21 = box1
+        x12, x22, y12, y22 = box2
 
-    xi1 = max(x11, x12)
-    yi1 = max(y11, y12)
-    xi2 = min(x21, x22)
-    yi2 = min(y21, y22)
+        xi1 = max(x11, x12)
+        yi1 = max(y11, y12)
+        xi2 = min(x21, x22)
+        yi2 = min(y21, y22)
 
-    inter_width = max(0, xi2 - xi1)
-    inter_height = max(0, yi2 - yi1)
-    inter_area = inter_width * inter_height
+        inter_width = max(0, xi2 - xi1)
+        inter_height = max(0, yi2 - yi1)
+        inter_area = inter_width * inter_height
 
-    box1_area = (x21 - x11) * (y21 - y11)
-    box2_area = (x22 - x12) * (y22 - y12)
+        box1_area = (x21 - x11) * (y21 - y11)
+        box2_area = (x22 - x12) * (y22 - y12)
 
-    union_area = box1_area + box2_area - inter_area
+        union_area = box1_area + box2_area - inter_area
 
-    if union_area == 0:
-        return 0.0
+        if union_area == 0:
+            return 0.0
 
-    iou = inter_area / union_area
-    return iou
+        iou = inter_area / union_area
+        return iou
 
     def compute_reward(self, actual_state, previous_state, ground_truth):
         """
