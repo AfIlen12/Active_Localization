@@ -397,7 +397,7 @@ class Agent():
                 max_gt = gt
         return max_gt
 
-    def predict_image(self, image, plot=False):
+    def predict_image(self, image, plot=True):
         """
             Prédit la boite englobante d'une image
             Entrée :
