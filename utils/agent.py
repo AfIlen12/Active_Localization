@@ -29,7 +29,7 @@ import glob
 from PIL import Image
 
 class Agent():
-    def __init__(self, classe, alpha=0.2, nu=3.0, threshold=0.5, num_episodes=15, load=False ):
+    def __init__(self, classe, alpha=0.2, nu=3.0, threshold=0.35, num_episodes=15, load=False ):
         self.BATCH_SIZE = 100
         self.GAMMA = 0.900
         self.EPS = 1  #epsilon 
@@ -439,7 +439,7 @@ class Agent():
                         reward = self.compute_reward(new_equivalent_coord, actual_equivalent_coord, closest_gt)
                         
                         actual_equivalent_coord = new_equivalent_coord
-                    if t == 40:
+                    if t == 20:
                         done = True
                     self.memory.push(state, int(action), next_state, reward)
 
@@ -458,8 +458,8 @@ class Agent():
             if i_episode % self.TARGET_UPDATE == 0:
                 self.target_net.load_state_dict(self.policy_net.state_dict())
             
-            if i_episode<6:
-                self.EPS -= 0.15
+            if i_episode<5:
+                self.EPS -= 0.18
             self.save_network()
             
             print('Complete')
