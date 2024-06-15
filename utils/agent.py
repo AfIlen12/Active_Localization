@@ -306,7 +306,7 @@ class Agent():
                 max_gt = gt
         return max_gt
 
-    def predict_image(self, image, plot=False):
+    def predict_image(self, image, plot=False,choice  = 1 ):
         """ 
             Transform 40 step, mà vẫn chưa dùng trigger thì lấy ảnh sau khi đã transform 40 steps. Sau 40 steps, không tìm ra thì kết thúc chứ không 
             tiếp tục tìm trên vùng nhỏ hơn.    
@@ -359,18 +359,32 @@ class Agent():
         
 
         if plot:
-            tested = 0
-            while os.path.isfile('media/movie_'+str(tested)+'.gif'):
-                tested += 1
-            fp_out = "media/movie_"+str(tested)+".gif"
-            images = []
-            for count in range(1, steps+1):
-                images.append(imageio.imread(str(count)+".png"))
-            
-            imageio.mimsave(fp_out, images)
-            
-            for count in range(1, steps):
-                os.remove(str(count)+".png")
+            if (choice) : 
+                tested = 0
+                while os.path.isfile('media/movie_'+str(tested)+'.gif'):
+                    tested += 1
+                fp_out = "media/movie_"+str(tested)+".gif"
+                images = []
+                for count in range(1, steps+1):
+                    images.append(imageio.imread(str(count)+".png"))
+                
+                imageio.mimsave(fp_out, images)
+                
+                for count in range(1, steps):
+                    os.remove(str(count)+".png")
+            if (not choice) : 
+                tested = 0
+                while os.path.isfile('media2/movie_'+str(tested)+'.gif'):
+                    tested += 1
+                fp_out = "media2/movie_"+str(tested)+".gif"
+                images = []
+                for count in range(1, steps+1):
+                    images.append(imageio.imread(str(count)+".png"))
+                
+                imageio.mimsave(fp_out, images)
+                
+                for count in range(1, steps):
+                    os.remove(str(count)+".png")
         return new_equivalent_coord
 
 
