@@ -114,7 +114,7 @@ class Agent():
         res = self.intersection_over_union(actual_state, ground_truth)
         if res>=self.threshold:
             return self.nu
-        return -1.5
+        return -1*self.nu
 
     def get_best_next_action(self, actions, ground_truth):
         """
