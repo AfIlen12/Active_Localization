@@ -29,7 +29,7 @@ import glob
 from PIL import Image
 
 class Agent():
-    def __init__(self, classe, alpha=0.2, nu=3.0, threshold=0.35, num_episodes=15, load=False ):
+    def __init__(self, classe, alpha=0.2, nu=3.0, threshold=0.5, num_episodes=15, load=False ):
         self.BATCH_SIZE = 100
         self.GAMMA = 0.900
         self.EPS = 1  #epsilon 

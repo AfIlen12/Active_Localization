@@ -146,8 +146,7 @@ def prec_rec_compute(bounding_boxes, gt_boxes, ovthresh):
     tp = np.cumsum(tp)
     rec = tp / float(npos)
     prec = tp / np.maximum(tp + fp, np.finfo(np.float64).eps)
-    print(f"thu nghiem rec = {rec}")
-    print(f"thu nghiem prec = {prec}")  
+
     
     return prec, rec
 
